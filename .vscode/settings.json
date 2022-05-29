@@ -1,0 +1,14 @@
+{
+    "files.exclude": {
+        ".gitignore": true,
+        "package-lock.json": true,
+        "tsconfig.json": true,
+        ".vscode": true,
+        "bin": true,
+        "dist": true,
+        "coverage": true,
+        "babel.config.js": true,
+        "jest.config.ts": true,
+        "lib/tsconfig.json": true,
+    }
+}
