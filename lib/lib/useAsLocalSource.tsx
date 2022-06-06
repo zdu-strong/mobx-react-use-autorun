@@ -1,5 +1,5 @@
 import { extendObservable, observable, remove, runInAction, isObservable } from 'mobx';
-import { useRef } from 'react';
+import { useState } from 'react';
 
 export function useAsLocalSource<T extends object>(data: T): T {
 
@@ -7,11 +7,11 @@ export function useAsLocalSource<T extends object>(data: T): T {
         if (Array.isArray(data)) {
             throw new Error('Arrays is unsupported!');
         }
-        const initState = observable({}, undefined, { deep: false }) as T;
+        const initState = observable({}) as T;
         return initState;
     };
 
-    const state = useRef(initStateCallback()).current;
+    const [state] = useState(initStateCallback);
 
     runInAction(() => {
         for (const key in state) {
@@ -23,7 +23,7 @@ export function useAsLocalSource<T extends object>(data: T): T {
             if (isObservable(data[key])) {
                 state[key] = data[key];
             } else {
-                if(data[key] !== state[key]){
+                if (data[key] !== state[key]) {
                     remove(state, key);
                     extendObservable(state, { [key]: data[key] }, { [key]: false })
                 }
