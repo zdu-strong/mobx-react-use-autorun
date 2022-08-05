@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useMount, useUnmount } from 'react-use';
 import { catchError, concatMap, debounceTime, EMPTY, from, lastValueFrom, ReplaySubject, Subscription } from 'rxjs';
 import { exhaustMapWithTrailing } from 'rxjs-exhaustmap-with-trailing';
-import { useAsLocalSource } from './useAsLocalSource';
+import { useMobxState } from './useMobxState';
 
 export function useAsyncExhaust<T>(callback: T) {
 
@@ -36,7 +36,7 @@ export function useAsyncExhaust<T>(callback: T) {
         isUnmount: false,
     }).current;
 
-    const source = useAsLocalSource({ callback });
+    const source = useMobxState({}, { callback });
 
     useMount(() => {
         state.subscription.add(state.subject.pipe(

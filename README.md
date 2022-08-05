@@ -23,13 +23,13 @@ Builds the files for production to the `dist` folder.<br/>
 
 Publish to npm repository
 
-## Notes - Define state with useLocalObservable
+## Notes - Define state with useMobxState
 
-    import { useLocalObservable, observer } from 'mobx-react-use-autorun';
+    import { useMobxState, observer } from 'mobx-react-use-autorun';
 
     export default observer(() => {
 
-        const state = useLocalObservable(() => ({ randomNumber: 1 }));
+        const state = useMobxState({ randomNumber: 1 });
 
         return <div onClick={() => state.randomNumber = Math.random()}>
             {state.randomNumber}
@@ -40,12 +40,12 @@ more usage:<br/>
 Form validation<br/>
 
     import { Button, TextField } from '@mui/material';
-    import { observer, useLocalObservable } from 'mobx-react-use-autorun';
+    import { observer, useMobxState } from 'mobx-react-use-autorun';
     import { MessageService } from '../../common/MessageService';
 
     export default observer(() => {
 
-        const state = useLocalObservable(() => ({
+        const state = useMobxState({
             name: "",
             submit: false,
             errors: {
@@ -56,7 +56,7 @@ Form validation<br/>
                     return state.errors.name;
                 }
             }
-        }));
+        });
 
         const ok = async () => {
             state.submit = true;
@@ -73,30 +73,15 @@ Form validation<br/>
         </div>)
     })
 
-## Notes - Using props and other hooks with useAsLocalSource
+## Notes - Subscription property changes with useMobxEffect
 
-    import { observer, useAsLocalSource } from 'mobx-react-use-autorun';
-    import { useLocation } from 'react-router-dom';
-
-    export default observer((props: { name: string }) => {
-
-        const source = useAsLocalSource({ location: useLocation(), ...props });
-
-        return <div>
-            {source.name}
-            {source.location.pathname}
-        </div>
-    })
-
-## Notes - Subscription property changes with useAutorun
-
-    import { useLocalObservable, observer, useAutorun, toJS } from 'mobx-react-use-autorun';
+    import { useMobxState, observer, useMobxEffect, toJS } from 'mobx-react-use-autorun';
 
     export default observer(() => {
 
-        const state = useLocalObservable(() => ({ randomNumber: 1 }));
+        const state = useMobxState({ randomNumber: 1 });
 
-        useAutorun(() => {
+        useMobxEffect(() => {
             console.log(toJS(state))
         }, [state]);
 
@@ -108,15 +93,15 @@ Form validation<br/>
 ## Notes - Ignore frequent asynchronous calls with useAsyncExhaust
 
     import { TextField } from "@mui/material";
-    import { useLocalObservable, observer, useAsyncExhaust } from 'mobx-react-use-autorun';
+    import { useMobxState, observer, useAsyncExhaust } from 'mobx-react-use-autorun';
     import axios from 'axios';
 
     export default observer(() => {
 
-        const state = useLocalObservable(() => ({
+        const state = useMobxState({
             list: [],
             searchText: ""
-        }));
+        });
 
         const search = useAsyncExhaust(async () => {
             state.list = await axios.get("/search");
@@ -140,15 +125,6 @@ Form validation<br/>
     import { observable } from 'mobx-react-use-autorun';
 
     const state = observable({});
-
-## Notes - Define a delayed promise with timeout
-
-    import { timeout } form 'mobx-react-use-autorun';
-
-    async function(){
-        await timeout(100);
-        await timeout(new Date());
-    }
 
 ## Notes - Get the real data of the proxy object with toJS
 
