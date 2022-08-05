@@ -1,4 +1,4 @@
-import { extendObservable, remove, isObservable } from 'mobx';
+import { extendObservable, remove, isObservable, keys } from 'mobx';
 import { useLocalObservable } from 'mobx-react-lite';
 
 export function useMobxState<T extends Record<any, any>, P extends Record<any, any>>(state: T | (() => T), props?: P | (() => P)): T & P {
@@ -12,7 +12,9 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
                 mobxState[key] = propsResult[key];
             } else {
                 if (propsResult[key] !== mobxState[key]) {
-                    remove(mobxState, key);
+                    if(keys(propsResult).includes(key)){
+                        remove(mobxState, key);
+                    }
                     extendObservable(mobxState, { [key]: propsResult[key] }, { [key]: false })
                 }
             }
