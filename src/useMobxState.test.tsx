@@ -7,9 +7,9 @@ test('', () => {
 })
 
 function TestComponent() {
-    const source = useMobxState({ people: { name: "tom" } });
+    const state = useMobxState({ people: { name: "tom" } });
 
     return <>
-        {source.people.name}
+        {state.people.name}
     </>;
 }
