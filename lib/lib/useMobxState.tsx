@@ -12,7 +12,7 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
                 mobxState[key] = propsResult[key];
             } else {
                 if (propsResult[key] !== mobxState[key]) {
-                    if(keys(propsResult).includes(key)){
+                    if(keys(mobxState).includes(key)){
                         remove(mobxState, key);
                     }
                     extendObservable(mobxState, { [key]: propsResult[key] }, { [key]: false })
