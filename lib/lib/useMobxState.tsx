@@ -7,13 +7,15 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
 
     const propsResult = typeof props === "function" ? props() : props;
 
-    for (const key in propsResult) {
-        if (isObservable(propsResult[key])) {
-            mobxState[key] = propsResult[key];
-        } else {
-            if (propsResult[key] !== mobxState[key]) {
-                remove(mobxState, key);
-                extendObservable(mobxState, { [key]: propsResult[key] }, { [key]: false })
+    if(propsResult){
+        for (const key in propsResult) {
+            if (isObservable(propsResult[key])) {
+                mobxState[key] = propsResult[key];
+            } else {
+                if (propsResult[key] !== mobxState[key]) {
+                    remove(mobxState, key);
+                    extendObservable(mobxState, { [key]: propsResult[key] }, { [key]: false })
+                }
             }
         }
     }
