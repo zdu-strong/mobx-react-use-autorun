@@ -90,36 +90,6 @@ Form validation<br/>
         </div>
     })
 
-## Notes - Ignore frequent asynchronous calls with useAsyncExhaust
-
-    import { TextField } from "@mui/material";
-    import { useMobxState, observer, useAsyncExhaust } from 'mobx-react-use-autorun';
-    import axios from 'axios';
-
-    export default observer(() => {
-
-        const state = useMobxState({
-            list: [],
-            searchText: ""
-        });
-
-        const search = useAsyncExhaust(async () => {
-            state.list = await axios.get("/search");
-        });
-
-        return (
-            <TextField
-                label="Please enter search content"
-                variant="outlined"
-                value={state.searchText}
-                onChange={(e) => {
-                    state.searchText = e.target.value;
-                    search();
-                }}
-            />
-        );
-    })
-
 ## Notes - Define global mutable data
 
     import { observable } from 'mobx-react-use-autorun';
