@@ -107,3 +107,7 @@ Form validation<br/>
 
 1. React UI framework (https://reactjs.org)<br/>
 2. React hooks (https://www.npmjs.com/package/react-use)<br/>
+
+## License
+
+This project is licensed under the terms of the [MIT license](/LICENSE.md).
