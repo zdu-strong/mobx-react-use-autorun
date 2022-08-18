@@ -3,7 +3,7 @@ import { useMobxState } from '../lib';
 import { isObservable, observable } from 'mobx'
 
 test('', () => {
-    const result = render(<TestComponent data={initData} />);
+    render(<TestComponent data={initData} />);
     expect(isObservable(lastData)).toBeTruthy()
 })
 
