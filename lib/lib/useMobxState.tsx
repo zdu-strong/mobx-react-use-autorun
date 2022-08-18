@@ -9,8 +9,8 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
 
         if (propsResult) {
             for (const key in propsResult) {
-                if (isObservable(propsResult[key])) {
-                    mobxState[key] = propsResult[key];
+                if (isObservable(propsResult[key]) || Object.getOwnPropertyDescriptor(propsResult, key)?.get) {
+                    Object.defineProperty(mobxState, key, Object.getOwnPropertyDescriptor(propsResult, key) as any)
                 } else {
                     if (propsResult[key] !== mobxState[key]) {
                         remove(mobxState, key);

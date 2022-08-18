@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import { useState } from 'react';
 import { useMobxState } from '../lib';
 
 test('', () => {
@@ -7,7 +6,6 @@ test('', () => {
     expect(result.container.textContent).toEqual('tom')
 })
 
-useState
 function TestComponent() {
     const state = useMobxState(() => ({ people: { name: "tom" } }));
 
