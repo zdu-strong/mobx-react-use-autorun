@@ -14,7 +14,7 @@ In the project directory, you can run:<br/>
 
 Pre-step, please run<br/>
 
-    npm i
+    npm install
 
 Run all unit tests.<br/>
 
@@ -22,7 +22,7 @@ Run all unit tests.<br/>
 
 Pre-step, please run<br/>
 
-    npm i
+    npm install
 
 Builds the files for production to the `dist` folder.<br/>
 
@@ -30,7 +30,7 @@ Builds the files for production to the `dist` folder.<br/>
 
 Pre-step, please run<br/>
 
-    npm i
+    npm install
 
 Publish to npm repository
 
