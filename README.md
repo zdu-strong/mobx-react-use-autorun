@@ -12,24 +12,35 @@ In the project directory, you can run:<br/>
 
 ### `npm test`
 
+Pre-step, please run<br/>
+
+    npm i
+
 Run all unit tests.<br/>
 
-
 ### `npm run build`
+
+Pre-step, please run<br/>
+
+    npm i
 
 Builds the files for production to the `dist` folder.<br/>
 
 ### `npm publish`
 
+Pre-step, please run<br/>
+
+    npm i
+
 Publish to npm repository
 
-## Notes - Define state with useMobxState
+## Notes - Define state and props with useMobxState
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
 
-    export default observer(() => {
+    export default observer((props: {name: string}) => {
 
-        const state = useMobxState({ randomNumber: 1 });
+        const state = useMobxState({ randomNumber: 1 }, {...props});
 
         return <div onClick={() => state.randomNumber = Math.random()}>
             {state.randomNumber}
