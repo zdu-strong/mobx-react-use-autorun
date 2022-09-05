@@ -5,6 +5,7 @@ import path from 'path';
 const run = async () => {
     await deletePackageLockFile();
     await deleteBuildFolder();
+    await deleteOutputFolder();
     execSync(
         [
             "cross-env",
@@ -26,5 +27,10 @@ const deleteBuildFolder = async () => {
     const folderPath = path.join(__dirname, "..", "dist");
     await fs.promises.rm(folderPath, { recursive: true, force: true });
 };
+
+async function deleteOutputFolder(){
+    const folderPath = path.join(__dirname, "..", "output");
+    await fs.promises.rm(folderPath, { recursive: true, force: true });
+}
 
 export default run();

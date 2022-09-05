@@ -12,25 +12,13 @@ In the project directory, you can run:<br/>
 
 ### `npm test`
 
-Pre-step, please run<br/>
-
-    npm install
-
 Run all unit tests.<br/>
 
 ### `npm run build`
 
-Pre-step, please run<br/>
-
-    npm install
-
 Builds the files for production to the `dist` folder.<br/>
 
-### `npm publish`
-
-Pre-step, please run<br/>
-
-    npm install
+### `npm make`
 
 Publish to npm repository
 
