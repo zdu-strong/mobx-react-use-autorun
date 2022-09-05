@@ -18,7 +18,7 @@ Run all unit tests.<br/>
 
 Builds the files for production to the `dist` folder.<br/>
 
-### `npm make`
+### `npm run make`
 
 Publish to npm repository
 
