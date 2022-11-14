@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "3.0.27",
+  "version": "3.0.28",
   "description": "React Hook for mobx",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",

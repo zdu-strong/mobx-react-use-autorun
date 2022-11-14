@@ -76,13 +76,14 @@ useMobxState provides two usages.<br/>
 
 useMobxState({},{}) is easy to use, you can define state and third-party hooks.<br/>
 
+    useMobxState(()=>({
+        get (){
+            return state.name
+        },
+        name: string = 'tom',
+    }),{})
 
-useMobxState(()=>({
-    get (){
-        return state.name
-    },
-    name,
-}),{}) provides advanced usage, the state is executed only once, and the performance is better. At the same time, you can use the get computed property to recalculate when the computed value changes.<br/>
+ provides advanced usage, the state is executed only once, and the performance is better. At the same time, you can use the get computed property to recalculate when the computed value changes.<br/>
 
 ## Notes - Subscription property changes with useMobxEffect
 
