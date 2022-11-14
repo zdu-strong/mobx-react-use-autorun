@@ -103,7 +103,7 @@ useMobxState(()=>({
 
 ## Notes - Get the real data of the proxy object with toJS
 
-toJS will cause data to be used, Please do not execute toJS(state) in component rendering code, it may cause repeated rendering. Wrong Usage Demonstration:
+toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering. Wrong Usage Demonstration:<br/>
 
     import { toJS, observer, useMobxState } from 'mobx-react-use-autorun'
     import { v1 } from 'uuid'
@@ -119,7 +119,7 @@ toJS will cause data to be used, Please do not execute toJS(state) in component 
         return null;
     })
 
-Other than that, all usages are correct. Example:
+Other than that, all usages are correct. Example:<br/>
 
     import { toJS, useMobxEffect, observer, useMobxState } from 'mobx-react-use-autorun';
     import { v1 } from 'uuid'
@@ -147,8 +147,8 @@ Other than that, all usages are correct. Example:
 
 ## Introduction to third-party hooks
 
-useMount is executed when the component loaded.
-useUnmount is executed when the component is unmount.
+useMount is executed when the component loaded.<br/>
+useUnmount is executed when the component is unmount.<br/>
 
     import { useMount, useUnmount } from 'react-use'
     import { Subscription, of, tap } from 'rxjs'
