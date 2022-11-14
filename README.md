@@ -29,9 +29,17 @@ Publish to npm repository
 
     export default observer((props: {name: string}) => {
 
-        const state = useMobxState({ randomNumber: 1 }, { ...props, divRef: useRef<any>() });
+        const state = useMobxState({
+            randomNumber: 1
+        }, {
+            ...props,
+            divRef: useRef<any>()
+        });
 
-        return <div ref={state.divRef} onClick={() => state.randomNumber = Math.random()}>
+        return <div
+            ref={state.divRef}
+            onClick={() => state.randomNumber = Math.random()}
+        >
             {state.randomNumber}
         </div>
     })
@@ -50,10 +58,14 @@ Form validation<br/>
             submit: false,
             errors: {
                 get name() {
-                    return state.submit && !state.name && "Please fill in the username";
+                    return state.submit &&
+                        !state.name &&
+                        "Please fill in the username";
                 },
                 get hasError() {
-                    return Object.keys(state.errors).filter(s => s !== "hasError").some(s => (state.errors as any)[s]);
+                    return Object.keys(state.errors)
+                        .filter(s => s !== "hasError")
+                        .some(s => (state.errors as any)[s]);
                 }
             }
         }));
@@ -68,8 +80,18 @@ Form validation<br/>
         }
 
         return (<div className='flex flex-col' style={{ padding: "2em" }}>
-            <TextField value={state.name} label="Username" onChange={(e) => state.name = e.target.value} error={!!state.errors.name} helperText={state.errors.name} />
-            <Button variant="contained" style={{ marginTop: "2em" }} onClick={ok} >Submit</Button>
+            <TextField
+                value={state.name}
+                label="Username"
+                onChange={(e) => state.name = e.target.value}
+                error={!!state.errors.name}
+                helperText={state.errors.name}
+            />
+            <Button
+                variant="contained"
+                style={{ marginTop: "2em" }}
+                onClick={ok}
+            >Submit</Button>
         </div>)
     })
 
