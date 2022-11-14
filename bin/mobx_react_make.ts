@@ -5,9 +5,8 @@ import fs from 'fs'
 const run = async () => {
     execSync(
         [
-            "cross-env",
-            "TS_NODE_SKIP_PROJECT=true",
-            "ts-node bin/pre_load_configuration.ts",
+            "npx -y ts-node --skipProject",
+            "bin/pre_load_configuration.ts",
         ].join(" "),
         {
             stdio: "inherit",
@@ -16,7 +15,7 @@ const run = async () => {
     );
     execSync(
         [
-            "react-scripts test  --watchAll=false",
+            "react-scripts test --watchAll=false",
         ].join(" "),
         {
             stdio: "inherit",
@@ -25,7 +24,6 @@ const run = async () => {
     );
     execSync(
         [
-            "cross-env",
             "tsc -p .",
         ].join(" "),
         {

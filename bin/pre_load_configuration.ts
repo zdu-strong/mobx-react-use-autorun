@@ -8,9 +8,8 @@ const run = async () => {
     await deleteOutputFolder();
     execSync(
         [
-            "cross-env",
-            "npm_config_package_lock=false",
             "npm install",
+            "--no-package-lock",
         ].join(" "),
         {
             stdio: "inherit",

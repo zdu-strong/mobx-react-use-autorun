@@ -1,11 +1,11 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "3.0.22",
+  "version": "3.0.23",
   "description": "React Hook for mobx",
   "scripts": {
-    "test": "npm install -g typescript@latest @types/node@latest ts-node@latest cross-env@latest && cross-env TS_NODE_SKIP_PROJECT=true ts-node bin/mobx_react_test.ts",
-    "build": "npm install -g typescript@latest @types/node@latest ts-node@latest cross-env@latest && cross-env TS_NODE_SKIP_PROJECT=true ts-node bin/mobx_react_build.ts",
-    "make": "npm install -g typescript@latest @types/node@latest ts-node@latest cross-env@latest && cross-env TS_NODE_SKIP_PROJECT=true ts-node bin/mobx_react_make.ts"
+    "test": "npx -y ts-node --skipProject bin/mobx_react_test.ts",
+    "build": "npx -y ts-node --skipProject bin/mobx_react_build.ts",
+    "make": "npx -y ts-node --skipProject bin/mobx_react_make.ts"
   },
   "dependencies": {
     "mobx": ">=6.5.0",

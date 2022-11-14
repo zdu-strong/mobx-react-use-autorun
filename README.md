@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Development environment setup
 1. From https://code.visualstudio.com install Visual Studio Code.<br/>
-2. From https://nodejs.org/en/ install nodejs v16.<br/>
+2. From https://nodejs.org install nodejs v16.<br/>
 
 ## Available Scripts
 
@@ -44,7 +44,7 @@ Form validation<br/>
 
     export default observer(() => {
 
-        const state = useMobxState({
+        const state = useMobxState(() => ({
             name: "",
             submit: false,
             errors: {
@@ -52,10 +52,10 @@ Form validation<br/>
                     return state.submit && !state.name && "请填写名称";
                 },
                 get hasError() {
-                    return state.errors.name;
+                    return Object.keys(state.errors).filter(s => s !== "hasError").some(s => (state.errors as any)[s]);
                 }
             }
-        });
+        }));
 
         const ok = async () => {
             state.submit = true;
@@ -72,6 +72,18 @@ Form validation<br/>
         </div>)
     })
 
+useMobxState提供两种用法.
+
+useMobxState({},{})使用简单, 可以定义state和第三方hooks. 
+
+useMobxState(()=>({
+    get (){
+        return state.name
+    }
+}),(props: {name: string})=>({
+    ...props
+})) 提供高级用法, state只执行一次, 性能更好, 同时可以使用get计算属性, 在计算值变化时, 重新计算.
+
 ## Notes - Subscription property changes with useMobxEffect
 
     import { useMobxState, observer, useMobxEffect, toJS } from 'mobx-react-use-autorun';
@@ -82,11 +94,49 @@ Form validation<br/>
 
         useMobxEffect(() => {
             console.log(toJS(state))
-        }, [state]);
+        }, [state.randomNumber])
 
         return <div onClick={() => state.randomNumber = Math.random()}>
             {state.randomNumber}
         </div>
+    })
+
+## Notes - Get the real data of the proxy object with toJS
+
+toJS will cause data to be used, Please do not execute toJS(state) in component rendering code, it may cause repeated rendering. Wrong Usage Demonstration:
+
+    import { toJS, observer, useMobxState } from 'mobx-react-use-autorun'
+    import { v1 } from 'uuid'
+
+    export default observer(() => {
+
+        const state = useMobxState({}, {
+            id: v1()
+        })
+
+        toJS(state)
+
+        return null;
+    })
+
+Other than that, all usages are correct. Example:
+
+    import { toJS, useMobxEffect, observer, useMobxState } from 'mobx-react-use-autorun';
+    import { v1 } from 'uuid'
+
+    export default observer(() => {
+
+        const state = useMobxState({}, {
+            name: v1()
+        });
+
+        useMobxEffect(() => {
+            console.log(toJS(state))
+        })
+
+        console.log(toJS(state.name))
+
+        return <button onClick={() => console.log(toJS(state))}>{'Click Me'}</button>;
     })
 
 ## Notes - Define global mutable data
@@ -95,12 +145,29 @@ Form validation<br/>
 
     const state = observable({});
 
-## Notes - Get the real data of the proxy object with toJS
+## Introduction to third-party hooks
 
-    import { observable, toJS } from 'mobx-react-use-autorun';
+useMount is executed when the component loaded.
+useUnmount is executed when the component is unmount.
 
-    const state = observable({});
-    console.log(toJS(state));
+    import { useMount, useUnmount } from 'react-use'
+    import { Subscription, of, tap } from 'rxjs'
+
+    const state = useMobxState({
+        subscription: new Subscription()
+    })
+
+    useMount(() => {
+        state.subscription.add(of(null).pipe(
+            tap(() => {
+                console.log('component is loaded')
+            })
+        ).subscribe())
+    })
+
+    useUnmount(() => {
+        state.subscription.unsubscribe()
+    })
 
 ## Learn More
 
