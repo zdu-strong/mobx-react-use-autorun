@@ -49,7 +49,7 @@ Form validation<br/>
             submit: false,
             errors: {
                 get name() {
-                    return state.submit && !state.name && "请填写名称";
+                    return state.submit && !state.name && "Please fill in the username";
                 },
                 get hasError() {
                     return Object.keys(state.errors).filter(s => s !== "hasError").some(s => (state.errors as any)[s]);
@@ -60,21 +60,25 @@ Form validation<br/>
         const ok = async () => {
             state.submit = true;
             if (state.errors.hasError) {
-                MessageService.error("错误");
+                MessageService.error("Error");
             } else {
-                MessageService.success("提交成功");
+                MessageService.success("Submitted successfully");
             }
         }
 
         return (<div className='flex flex-col' style={{ padding: "2em" }}>
-            <TextField value={state.name} label="用户名" onChange={(e) => state.name = e.target.value} error={!!state.errors.name} helperText={state.errors.name} />
-            <Button variant="contained" style={{ marginTop: "2em" }} onClick={ok} >提交</Button>
+            <TextField value={state.name} label="Username" onChange={(e) => state.name = e.target.value} error={!!state.errors.name} helperText={state.errors.name} />
+            <Button variant="contained" style={{ marginTop: "2em" }} onClick={ok} >Submit</Button>
         </div>)
     })
 
 useMobxState provides two usages.<br/>
 
-useMobxState({},{}) is easy to use, you can define state and third-party hooks.<br/>
+    useMobxState({
+
+    },{})
+
+is easy to use, you can define state and third-party hooks.<br/>
 
     useMobxState(()=>({
         get (){
