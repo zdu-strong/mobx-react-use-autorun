@@ -25,12 +25,13 @@ Publish to npm repository
 ## Notes - Define state and props with useMobxState
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
+    import { useRef } from 'react';
 
     export default observer((props: {name: string}) => {
 
-        const state = useMobxState({ randomNumber: 1 }, {...props});
+        const state = useMobxState({ randomNumber: 1 }, { ...props, divRef: useRef<any>() });
 
-        return <div onClick={() => state.randomNumber = Math.random()}>
+        return <div ref={state.divRef} onClick={() => state.randomNumber = Math.random()}>
             {state.randomNumber}
         </div>
     })
