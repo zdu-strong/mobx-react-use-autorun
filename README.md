@@ -72,9 +72,10 @@ Form validation<br/>
         </div>)
     })
 
-useMobxState提供两种用法.
+useMobxState provides two usages.<br/>
 
-useMobxState({},{})使用简单, 可以定义state和第三方hooks. 
+useMobxState({},{}) is easy to use, you can define state and third-party hooks.<br/>
+
 
 useMobxState(()=>({
     get (){
@@ -82,7 +83,7 @@ useMobxState(()=>({
     }
 }),(props: {name: string})=>({
     ...props
-})) 提供高级用法, state只执行一次, 性能更好, 同时可以使用get计算属性, 在计算值变化时, 重新计算.
+})) provides advanced usage, the state is executed only once, and the performance is better. At the same time, you can use the get computed property to recalculate when the computed value changes.<br/>
 
 ## Notes - Subscription property changes with useMobxEffect
 
