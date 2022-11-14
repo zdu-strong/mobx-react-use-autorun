@@ -114,7 +114,8 @@ is easy to use, you can define state and third-party hooks.<br/>
 
 ## Notes - Subscription property changes with useMobxEffect
 
-    import { useMobxState, observer, useMobxEffect, toJS } from 'mobx-react-use-autorun';
+    import { useMobxState, observer } from 'mobx-react-use-autorun';
+    import { useMobxEffect, toJS } from 'mobx-react-use-autorun'
 
     export default observer(() => {
 
@@ -149,7 +150,8 @@ toJS will cause data to be used, please do not execute toJS(state) in component 
 
 Other than that, all usages are correct. Example:<br/>
 
-    import { toJS, useMobxEffect, observer, useMobxState } from 'mobx-react-use-autorun';
+    import { toJS, useMobxEffect } from 'mobx-react-use-autorun';
+    import { observer, useMobxState } from 'mobx-react-use-autorun';
     import { v1 } from 'uuid'
 
     export default observer(() => {
