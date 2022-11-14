@@ -158,6 +158,7 @@ useUnmount is executed when the component is unmount.<br/>
 
     import { useMount, useUnmount } from 'react-use'
     import { Subscription, of, tap } from 'rxjs'
+    import { useMobxState } from 'mobx-react-use-autorun'
 
     const state = useMobxState({
         subscription: new Subscription()
