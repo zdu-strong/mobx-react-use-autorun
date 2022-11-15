@@ -97,18 +97,27 @@ Form validation<br/>
 
 useMobxState provides two usages.<br/>
 
-    useMobxState({
+The first:
 
-    },{})
+    useMobxState({
+        name: 'tom',
+        age: 16
+    }, {
+        ...props,
+        init: useIntl(),
+    })
 
 is easy to use, you can define state and third-party hooks.<br/>
 
+The second:
+
     useMobxState(() => ({
-        get (){
-            return state.name
+        get myInfo(){
+            return `${state.name}'s age is ${state.age}`
         },
         name: string = 'tom',
-    }),{
+        age: 13,
+    }), {
         ...props,
         intl: useIntl(),
     })
