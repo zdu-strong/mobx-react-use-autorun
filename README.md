@@ -70,7 +70,7 @@ Form validation<br/>
             }
         }));
 
-        const ok = async () => {
+        async function ok(){
             state.submit = true;
             if (state.errors.hasError) {
                 MessageService.error("Error");
