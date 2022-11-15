@@ -173,7 +173,14 @@ Other than that, all usages are correct. Example:<br/>
 
     import { observable } from 'mobx-react-use-autorun';
 
-    const state = observable({});
+    export const globalState = observable({
+        age: 15
+        name: 'tom'
+    });
+
+    export async function setName(name: string){
+        globalState.name = name
+    }
 
 ## Introduction to third-party hooks
 
@@ -182,22 +189,27 @@ useUnmount is executed when the component is unmount.<br/>
 
     import { useMount, useUnmount } from 'react-use'
     import { Subscription, of, tap } from 'rxjs'
-    import { useMobxState } from 'mobx-react-use-autorun'
+    import { useMobxState, observer } from 'mobx-react-use-autorun'
 
-    const state = useMobxState({
-        subscription: new Subscription()
-    })
+    export default observer(() => {
 
-    useMount(() => {
-        state.subscription.add(of(null).pipe(
-            tap(() => {
-                console.log('component is loaded')
-            })
-        ).subscribe())
-    })
+        const state = useMobxState({
+            subscription: new Subscription()
+        })
 
-    useUnmount(() => {
-        state.subscription.unsubscribe()
+        useMount(() => {
+            state.subscription.add(of(null).pipe(
+                tap(() => {
+                    console.log('component is loaded')
+                })
+            ).subscribe())
+        })
+
+        useUnmount(() => {
+            state.subscription.unsubscribe()
+        })
+
+        return null;
     })
 
 ## Learn More
