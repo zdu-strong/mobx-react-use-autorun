@@ -115,7 +115,7 @@ The second:
         get myInfo(){
             return `${state.name}'s age is ${state.age}`
         },
-        name: string = 'tom',
+        name: 'tom',
         age: 13,
     }), {
         ...props,
