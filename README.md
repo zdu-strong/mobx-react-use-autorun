@@ -57,22 +57,22 @@ Form validation<br/>
             name: "",
             submit: false,
             errors: {
-                get name() {
+                name() {
                     return state.submit &&
                         !state.name &&
                         "Please fill in the username";
                 },
-                get hasError() {
+                hasError() {
                     return Object.keys(state.errors)
                         .filter(s => s !== "hasError")
-                        .some(s => (state.errors as any)[s]);
+                        .some(s => (state.errors as any)[s]());
                 }
             }
         }));
 
         async function ok(){
             state.submit = true;
-            if (state.errors.hasError) {
+            if (state.errors.hasError()) {
                 MessageService.error("Error");
             } else {
                 MessageService.success("Submitted successfully");
@@ -84,8 +84,8 @@ Form validation<br/>
                 value={state.name}
                 label="Username"
                 onChange={(e) => state.name = e.target.value}
-                error={!!state.errors.name}
-                helperText={state.errors.name}
+                error={!!state.errors.name()}
+                helperText={state.errors.name()}
             />
             <Button
                 variant="contained"
@@ -112,7 +112,7 @@ is easy to use, you can define state and third-party hooks.<br/>
 The second:
 
     useMobxState(() => ({
-        get myInfo(){
+        myInfo(){
             return `${state.name}'s age is ${state.age}`
         },
         name: 'tom',
@@ -122,7 +122,7 @@ The second:
         intl: useIntl(),
     })
 
- provides advanced usage, the state is executed only once, and the performance is better. At the same time, you can use the get computed property to recalculate when the computed value changes.<br/>
+Provide a method to generate state, the state is executed only once, and the performance is better.<br/>
 
 ## Notes - Subscription property changes with useMobxEffect
 

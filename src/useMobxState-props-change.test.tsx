@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { useMobxState } from '../lib';
+import { observer, useMobxState } from '../lib';
 
 test('', () => {
     const result = render(<TestComponent people={{ name: "tom" }} />);
@@ -7,15 +7,10 @@ test('', () => {
     expect(result.container.textContent).toEqual('jerry')
 })
 
-function TestComponent(props: { people: { name: string } }) {
-    const state = useMobxState({}, {
-        ...props,
-        get firstName() {
-            return props.people.name;
-        }
-    });
+const TestComponent = observer((props: { people: { name: string } })=>{
+    const state = useMobxState({}, { ...props });
 
     return <>
         {state.people.name}
     </>;
-}
+})
