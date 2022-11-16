@@ -1,6 +1,9 @@
 import { extendObservable, remove, isObservable, runInAction } from 'mobx';
 import { useLocalObservable } from 'mobx-react-lite';
 
+export function useMobxState<T extends Record<any, any>>(state: T | (() => T)): T;
+export function useMobxState<T extends Record<any, any>, P extends Record<any, any>>(state: T | (() => T), props: P): T & P;
+
 export function useMobxState<T extends Record<any, any>, P extends Record<any, any>>(state: T | (() => T), props?: P): T & P {
     const mobxState = useLocalObservable(typeof state === "function" ? (state as any) : () => state);
 
