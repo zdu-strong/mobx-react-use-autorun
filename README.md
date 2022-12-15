@@ -22,7 +22,13 @@ Builds the files for production to the `dist` folder.<br/>
 
 Publish to npm repository
 
-## Notes - Define state and props with useMobxState
+## `Installation`
+
+    npm install mobx-react-use-autorun
+
+## `Usage`
+
+### Notes - Define state and props with useMobxState
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useRef } from 'react';
@@ -124,7 +130,7 @@ The second:
 
 Provide a method to generate state, the state is executed only once, and the performance is better.<br/>
 
-## Notes - Subscription property changes with useMobxEffect
+### Notes - Subscription property changes with useMobxEffect
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useMobxEffect, toJS } from 'mobx-react-use-autorun'
@@ -142,7 +148,7 @@ Provide a method to generate state, the state is executed only once, and the per
         </div>
     })
 
-## Notes - Get the real data of the proxy object with toJS
+### Notes - Get the real data of the proxy object with toJS
 
 toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering. Wrong Usage Demonstration:<br/>
 
@@ -181,7 +187,7 @@ Other than that, all usages are correct. Example:<br/>
         return <button onClick={() => console.log(toJS(state))}>{'Click Me'}</button>;
     })
 
-## Notes - Define global mutable data
+### Notes - Define global mutable data
 
     import { observable } from 'mobx-react-use-autorun';
 
