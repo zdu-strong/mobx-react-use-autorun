@@ -59,7 +59,7 @@ Form validation<br/>
 
     export default observer(() => {
 
-        const state = useMobxState(() => ({
+        const state = useMobxState({
             name: "",
             submit: false,
             errors: {
@@ -74,7 +74,7 @@ Form validation<br/>
                         .some(s => (state.errors as any)[s]());
                 }
             }
-        }));
+        });
 
         async function ok(){
             state.submit = true;
@@ -107,7 +107,10 @@ The first:
 
     useMobxState({
         name: 'tom',
-        age: 16
+        age: 16,
+        myInfo(){
+            return `${state.name}'s age is ${state.age}`
+        },
     }, {
         ...props,
         init: useIntl(),
@@ -118,11 +121,11 @@ is easy to use, you can define state and third-party hooks.<br/>
 The second:
 
     useMobxState(() => ({
+        name: 'tom',
+        age: 13,
         myInfo(){
             return `${state.name}'s age is ${state.age}`
         },
-        name: 'tom',
-        age: 13,
     }), {
         ...props,
         intl: useIntl(),
