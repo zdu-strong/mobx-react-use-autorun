@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "3.0.46",
+  "version": "3.0.47",
   "description": "React Hook for mobx",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",
@@ -11,7 +11,7 @@
     "mobx": "6.7.0",
     "mobx-react-lite": "3.4.0",
     "react-use": "17.4.0",
-    "rxjs": "7.5.7"
+    "rxjs": "7.8.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
@@ -20,14 +20,14 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/jest": "29.2.3",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
+    "@types/jest": "29.2.4",
+    "@types/node": "18.11.17",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
-    "typescript": "4.8.4"
+    "typescript": "4.9.4"
   },
   "license": "MIT",
   "keywords": [
