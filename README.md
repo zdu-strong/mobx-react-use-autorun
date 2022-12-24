@@ -22,11 +22,11 @@ Builds the files for production to the `dist` folder.<br/>
 
 Publish to npm repository
 
-## `Installation`
+# `Installation`
 
     npm install mobx-react-use-autorun
 
-## `Usage`
+# `Usage`
 
 ### Notes - Define state and props with useMobxState
 
@@ -246,11 +246,11 @@ useUnmount is executed when the component is unmount.<br/>
         return null;
     })
 
-## Learn More
+# Learn More
 
 1. React UI framework (https://reactjs.org)<br/>
 2. React hooks (https://www.npmjs.com/package/react-use)<br/>
 
-## License
+# License
 
 This project is licensed under the terms of the [MIT license](./LICENSE).
