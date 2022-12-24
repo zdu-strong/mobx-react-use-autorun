@@ -192,13 +192,26 @@ Other than that, all usages are correct. Example:<br/>
     import { observable } from 'mobx-react-use-autorun';
 
     export const globalState = observable({
-        age: 15
+        age: 15,
         name: 'tom'
     });
 
-    export async function setName(name: string){
-        globalState.name = name
+    export async function setAge(age: number) {
+        globalState.age = age
     }
+
+    import { observer } from "mobx-react-use-autorun";
+    import { setAge, globalState } from "./GlobalState";
+
+    export default observer(() => {
+        return <div
+            onClick={() => {
+                setAge(globalState.age + 1)
+            }}
+        >
+            {`${globalState.name}'s age is ${globalState.age}.`}
+        </div>;
+    })
 
 ## Introduction to third-party hooks
 
