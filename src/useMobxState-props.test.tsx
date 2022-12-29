@@ -6,7 +6,7 @@ test('', () => {
     expect(result.container.textContent).toEqual('tom')
 })
 
-const TestComponent = observer((props: { people: { name: string } })=>{
+const TestComponent = observer((props: { people: { name: string } }) => {
     const state = useMobxState({}, { ...props });
 
     return <>

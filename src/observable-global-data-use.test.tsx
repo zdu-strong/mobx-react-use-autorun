@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import { observer } from '../lib';
 import { observable } from 'mobx'
 
-test('', () => {
+test('', async () => {
     const result = render(<TestComponent />);
     expect(result.container.textContent).toEqual('tom')
 })
