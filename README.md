@@ -1,26 +1,5 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). If you have any questions, please contact zdu.strong@gmail.com.<br/>
-
-## Development environment setup
-1. From https://code.visualstudio.com install Visual Studio Code.<br/>
-2. From https://nodejs.org install nodejs v18.<br/>
-
-## Available Scripts
-
-In the project directory, you can run:<br/>
-
-### `npm test`
-
-Run all unit tests.<br/>
-
-### `npm run build`
-
-Builds the files for production to the `dist` folder.<br/>
-
-### `npm run make`
-
-Publish to npm repository
+Provide concise usage to facilitate the use of mobx in react
 
 # `Installation`
 
@@ -245,6 +224,30 @@ useUnmount is executed when the component is unmount.<br/>
 
         return null;
     })
+
+# Getting Started
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). If you have any questions, please contact zdu.strong@gmail.com.<br/>
+
+## Development environment setup
+1. From https://code.visualstudio.com install Visual Studio Code.<br/>
+2. From https://nodejs.org install nodejs v18.<br/>
+
+## Available Scripts
+
+In the project directory, you can run:<br/>
+
+### `npm test`
+
+Run all unit tests.<br/>
+
+### `npm run build`
+
+Builds the files for production to the `dist` folder.<br/>
+
+### `npm run make`
+
+Publish to npm repository
 
 # Learn More
 
