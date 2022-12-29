@@ -156,7 +156,7 @@ Other than that, all usages are correct. Example:<br/>
 
     export default observer(() => {
 
-        const state = useMobxState({}, {
+        const state = useMobxState({
             name: v1()
         });
 
