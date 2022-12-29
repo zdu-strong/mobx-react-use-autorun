@@ -95,7 +95,7 @@ The first:
         init: useIntl(),
     })
 
-is easy to use, you can define state and third-party hooks.<br/>
+is easy to use, you can define state, props and third-party hooks.<br/>
 
 The second:
 
