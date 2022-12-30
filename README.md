@@ -253,6 +253,8 @@ Publish to npm repository
 
 1. React UI framework (https://reactjs.org)<br/>
 2. React hooks (https://www.npmjs.com/package/react-use)<br/>
+3. Reactive Extensions Library for JavaScript (https://www.npmjs.com/package/rxjs)
+4. Material UI is a library of React UI components that implements Google's Material Design (https://mui.com)
 
 # License
 
