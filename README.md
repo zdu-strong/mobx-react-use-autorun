@@ -169,7 +169,7 @@ Other than that, all usages are correct. Example:<br/>
         return <button onClick={() => console.log(toJS(state))}>{'Click Me'}</button>;
     })
 
-### Notes - Define global mutable data
+### Notes - Define global mutable data with observable
 
     import { observable } from 'mobx-react-use-autorun';
 
