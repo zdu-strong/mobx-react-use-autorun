@@ -43,6 +43,8 @@ const run = async () => {
     const packageJson = JSON.parse(packageJsonString);
     delete packageJson.devDependencies;
     await fs.promises.writeFile(packageJsonFilePath, JSON.stringify(packageJson));
+    const tsconfigJsonFile = path.join(__dirname, "..", "output", "lib", "tsconfig.json");
+    await fs.promises.rm(tsconfigJsonFile, { recursive: true, force: true });
     execSync(
         [
             "npm publish",

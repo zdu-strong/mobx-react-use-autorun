@@ -8,9 +8,9 @@ export const useMobxEffect = (callback: () => void, dependencyList?: any[]): voi
 
     const state = useMobxState({
         subscription: new Subscription(),
-    }, Object.assign({}, dependencyList))
+    }, { callback })
 
-    const source = useMobxState({}, { callback });
+    const source = useMobxState({}, Object.assign({}, dependencyList));
 
     useEffect(() => {
         if (!dependencyList) {
@@ -20,7 +20,7 @@ export const useMobxEffect = (callback: () => void, dependencyList?: any[]): voi
 
     useMount(() => {
         if (dependencyList) {
-            const disposer = reaction(() => [toJS(state)], () => source.callback(), { fireImmediately: true, delay: 1 });
+            const disposer = reaction(() => [toJS(source)], () => state.callback(), { fireImmediately: true, delay: 1 });
 
             state.subscription.add(new Subscription(() => {
                 disposer();
