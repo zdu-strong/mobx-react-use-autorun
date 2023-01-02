@@ -92,7 +92,7 @@ The first:
         },
     }, {
         ...props,
-        init: useIntl(),
+        intl: useIntl(),
     })
 
 is easy to use, you can define state, props and third-party hooks.<br/>
