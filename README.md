@@ -1,5 +1,4 @@
-
-Provide concise usage to facilitate the use of mobx in react
+Provide concise usage for mobx in react<br/>
 
 # `Installation`
 
@@ -34,7 +33,6 @@ Form validation<br/>
 
     import { Button, TextField } from '@mui/material';
     import { observer, useMobxState } from 'mobx-react-use-autorun';
-    import { MessageService } from '../../common/MessageService';
 
     export default observer(() => {
 
@@ -58,9 +56,9 @@ Form validation<br/>
         async function ok(){
             state.submit = true;
             if (state.errors.hasError()) {
-                MessageService.error("Error");
+                console.log("Submission Failed");
             } else {
-                MessageService.success("Submitted successfully");
+                console.log("Submitted successfully");
             }
         }
 
@@ -132,7 +130,8 @@ Provide a method to generate state, the state is executed only once, and the per
 
 ### Notes - Get the real data of the proxy object with toJS
 
-toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering. Wrong Usage Demonstration:<br/>
+toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering.<br/>
+Wrong Usage Demonstration:<br/>
 
     import { toJS, observer, useMobxState } from 'mobx-react-use-autorun'
     import { v1 } from 'uuid'
@@ -148,7 +147,8 @@ toJS will cause data to be used, please do not execute toJS(state) in component 
         return null;
     })
 
-Other than that, all usages are correct. Example:<br/>
+Other than that, all usages are correct.<br/>
+Correct Example:<br/>
 
     import { toJS, useMobxEffect } from 'mobx-react-use-autorun';
     import { observer, useMobxState } from 'mobx-react-use-autorun';
