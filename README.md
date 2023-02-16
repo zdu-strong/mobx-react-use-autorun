@@ -225,6 +225,12 @@ useUnmount is executed when the component is unmount.<br/>
         return null;
     })
 
+# Learn More
+
+1. React UI framework (https://reactjs.org)<br/>
+2. Reactive Extensions Library for JavaScript (https://www.npmjs.com/package/rxjs)
+3. Material UI is a library of React UI components that implements Google's Material Design (https://mui.com)
+
 # Getting Started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). If you have any questions, please contact zdu.strong@gmail.com.<br/>
@@ -249,15 +255,9 @@ Builds the files for production to the `dist` folder.<br/>
 
 Publish to npm repository<br/>
 
-Pre-step, please run
+Pre-step, please run<br/>
 
     npm login --location=global
-
-# Learn More
-
-1. React UI framework (https://reactjs.org)<br/>
-2. Reactive Extensions Library for JavaScript (https://www.npmjs.com/package/rxjs)
-3. Material UI is a library of React UI components that implements Google's Material Design (https://mui.com)
 
 # License
 
