@@ -195,14 +195,14 @@ Correct Example:<br/>
         </div>;
     })
 
-## Introduction to third-party hooks
+## Notes - Lifecycle hooks
 
 useMount is executed when the component loaded.<br/>
 useUnmount is executed when the component is unmount.<br/>
 
-    import { useMount, useUnmount } from 'react-use'
     import { Subscription, of, tap } from 'rxjs'
     import { useMobxState, observer } from 'mobx-react-use-autorun'
+    import { useMount, useUnmount } from 'mobx-react-use-autorun'
 
     export default observer(() => {
 
@@ -247,7 +247,11 @@ Builds the files for production to the `dist` folder.<br/>
 
 ### `npm run make`
 
-Publish to npm repository
+Publish to npm repository<br/>
+
+Pre-step, please run
+
+    npm login --location=global
 
 # Learn More
 

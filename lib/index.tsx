@@ -1,8 +1,10 @@
-import './lib/mobx_config'
+import './js/mobx_config'
 import { toJS, observable } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { useMobxEffect } from './lib/useMobxEffect';
-import { useMobxState } from './lib/useMobxState';
+import { useMobxEffect } from './js/useMobxEffect';
+import { useMobxState } from './js/useMobxState';
+import { useMount, useUnmount } from 'react-use';
 
 export { toJS, observable, observer }
-export { useMobxEffect, useMobxState }
+export { useMobxState, useMobxEffect }
+export { useMount, useUnmount }
