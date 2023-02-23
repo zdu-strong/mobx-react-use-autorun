@@ -6,29 +6,29 @@ import { useEffect } from 'react';
 
 export const useMobxEffect = (callback: () => void, dependencyList?: any[]): void => {
 
-    const state = useMobxState({
-        subscription: new Subscription(),
-    }, { callback })
+  const state = useMobxState({
+    subscription: new Subscription(),
+  }, { callback })
 
-    const source = useMobxState({}, Object.assign({}, dependencyList));
+  const source = useMobxState({}, Object.assign({}, dependencyList));
 
-    useEffect(() => {
-        if (!dependencyList) {
-            callback()
-        }
-    })
+  useEffect(() => {
+    if (!dependencyList) {
+      callback()
+    }
+  })
 
-    useMount(() => {
-        if (dependencyList) {
-            const disposer = reaction(() => [toJS(source)], () => state.callback(), { fireImmediately: true, delay: 1 });
+  useMount(() => {
+    if (dependencyList) {
+      const disposer = reaction(() => [toJS(source)], () => state.callback(), { fireImmediately: true, delay: 1 });
 
-            state.subscription.add(new Subscription(() => {
-                disposer();
-            }));
-        }
-    })
+      state.subscription.add(new Subscription(() => {
+        disposer();
+      }));
+    }
+  })
 
-    useUnmount(() => {
-        state.subscription.unsubscribe();
-    })
+  useUnmount(() => {
+    state.subscription.unsubscribe();
+  })
 }
