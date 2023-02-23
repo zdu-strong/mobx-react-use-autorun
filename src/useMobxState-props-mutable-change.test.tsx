@@ -1,10 +1,12 @@
 import { render } from '@testing-library/react'
-import { observer, useMobxState } from '../lib';
+import { observable, observer, useMobxState } from '../lib';
 
 test('', () => {
-    const result = render(<TestComponent people={{ name: "tom" }} />);
+    let people = observable({ name: "tom" });
+    const result = render(<TestComponent people={people} />);
     expect(result.container.textContent).toEqual('tom')
-    result.rerender(<TestComponent people={{ name: "jerry" }} />)
+    people = observable({ name: "jerry" });
+    result.rerender(<TestComponent people={people} />)
     expect(result.container.textContent).toEqual('jerry')
 })
 
