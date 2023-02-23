@@ -6,7 +6,7 @@ Provide concise usage for mobx in react<br/>
 
 # `Usage`
 
-### Notes - Define state and props with useMobxState
+### Usage - Define state and props with useMobxState
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useRef } from 'react';
@@ -110,7 +110,7 @@ The second:
 
 Provide a method to generate state, the state is executed only once, and the performance is better.<br/>
 
-### Notes - Subscription property changes with useMobxEffect
+### Usage - Subscription property changes with useMobxEffect
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useMobxEffect, toJS } from 'mobx-react-use-autorun'
@@ -128,7 +128,7 @@ Provide a method to generate state, the state is executed only once, and the per
         </div>
     })
 
-### Notes - Get the real data of the proxy object with toJS
+### Usage - Get the real data of the proxy object with toJS
 
 toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering.<br/>
 Wrong Usage Demonstration:<br/>
@@ -169,7 +169,7 @@ Correct Example:<br/>
         return <button onClick={() => console.log(toJS(state))}>{'Click Me'}</button>;
     })
 
-### Notes - Define global mutable data with observable
+### Usage - Define global mutable data with observable
 
     import { observable } from 'mobx-react-use-autorun';
 
@@ -195,7 +195,7 @@ Correct Example:<br/>
         </div>;
     })
 
-## Notes - Lifecycle hooks
+### Usage - Lifecycle hooks
 
 useMount is executed when the component loaded.<br/>
 useUnmount is executed when the component is unmount.<br/>
