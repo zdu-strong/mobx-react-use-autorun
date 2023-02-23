@@ -6,7 +6,7 @@ Provide concise usage for mobx in react<br/>
 
 # `Usage`
 
-### Usage - Define state and props with useMobxState
+### Define state and props with useMobxState
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useRef } from 'react';
@@ -110,7 +110,7 @@ The second:
 
 Provide a method to generate state, the state is executed only once, and the performance is better.<br/>
 
-### Usage - Subscription property changes with useMobxEffect
+### Subscription property changes with useMobxEffect
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useMobxEffect, toJS } from 'mobx-react-use-autorun'
@@ -128,7 +128,37 @@ Provide a method to generate state, the state is executed only once, and the per
         </div>
     })
 
-### Usage - Get the real data of the proxy object with toJS
+### Lifecycle hooks
+
+useMount is executed when the component loaded.<br/>
+useUnmount is executed when the component is unmount.<br/>
+
+    import { Subscription, of, tap } from 'rxjs'
+    import { useMobxState, observer } from 'mobx-react-use-autorun'
+    import { useMount, useUnmount } from 'mobx-react-use-autorun'
+
+    export default observer(() => {
+
+        const state = useMobxState({
+            subscription: new Subscription()
+        })
+
+        useMount(() => {
+            state.subscription.add(of(null).pipe(
+                tap(() => {
+                    console.log('component is loaded')
+                })
+            ).subscribe())
+        })
+
+        useUnmount(() => {
+            state.subscription.unsubscribe()
+        })
+
+        return null;
+    })
+
+### Get the real data of the proxy object with toJS
 
 toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering.<br/>
 Wrong Usage Demonstration:<br/>
@@ -169,7 +199,7 @@ Correct Example:<br/>
         return <button onClick={() => console.log(toJS(state))}>{'Click Me'}</button>;
     })
 
-### Usage - Define global mutable data with observable
+### Define global mutable data with observable
 
     import { observable } from 'mobx-react-use-autorun';
 
@@ -193,36 +223,6 @@ Correct Example:<br/>
         >
             {`${globalState.name}'s age is ${globalState.age}.`}
         </div>;
-    })
-
-### Usage - Lifecycle hooks
-
-useMount is executed when the component loaded.<br/>
-useUnmount is executed when the component is unmount.<br/>
-
-    import { Subscription, of, tap } from 'rxjs'
-    import { useMobxState, observer } from 'mobx-react-use-autorun'
-    import { useMount, useUnmount } from 'mobx-react-use-autorun'
-
-    export default observer(() => {
-
-        const state = useMobxState({
-            subscription: new Subscription()
-        })
-
-        useMount(() => {
-            state.subscription.add(of(null).pipe(
-                tap(() => {
-                    console.log('component is loaded')
-                })
-            ).subscribe())
-        })
-
-        useUnmount(() => {
-            state.subscription.unsubscribe()
-        })
-
-        return null;
     })
 
 # Learn More
