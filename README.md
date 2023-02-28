@@ -191,12 +191,20 @@ Correct Example:<br/>
         });
 
         useMobxEffect(() => {
-            console.log(toJS(state))
+            console.log(toJS(state));
+            console.log(toJS(state.name));
         })
 
-        console.log(toJS(state.name))
+        console.log(toJS(state.name));
 
-        return <button onClick={() => console.log(toJS(state))}>{'Click Me'}</button>;
+        return <button
+          onClick={() => {
+            console.log(toJS(state));
+            console.log(toJS(state.name));
+          }}
+        >
+          {'Click Me'}
+        </button>;
     })
 
 ### Define global mutable data with observable
@@ -257,7 +265,7 @@ Publish to npm repository<br/>
 
 Pre-step, please run<br/>
 
-    npm login --location=global --registry https://registry.npmjs.org
+    npm login --registry https://registry.npmjs.org
 
 # License
 
