@@ -235,7 +235,7 @@ Correct Example:<br/>
 
 # Learn More
 
-1. React UI framework (https://reactjs.org)<br/>
+1. A JavaScript library for building user interfaces (https://reactjs.org)<br/>
 2. Reactive Extensions Library for JavaScript (https://www.npmjs.com/package/rxjs)
 3. Material UI is a library of React UI components that implements Google's Material Design (https://mui.com)
 
