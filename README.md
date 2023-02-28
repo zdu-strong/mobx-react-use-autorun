@@ -130,8 +130,8 @@ Provide a method to generate state, the state is executed only once, and the per
 
 ### Lifecycle hooks
 
-useMount is executed when the component loaded.<br/>
-useUnmount is executed when the component is unmount.<br/>
+useMount is a lifecycle hook that calls a function after the component is mounted.<br/>
+useUnmount is a lifecycle hook that calls a function when the component will unmount.<br/>
 
     import { Subscription, of, tap } from 'rxjs'
     import { useMobxState, observer } from 'mobx-react-use-autorun'
@@ -257,7 +257,7 @@ Publish to npm repository<br/>
 
 Pre-step, please run<br/>
 
-    npm login --location=global
+    npm login --location=global --registry https://registry.npmjs.org
 
 # License
 

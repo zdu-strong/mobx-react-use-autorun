@@ -1,7 +1,7 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "3.1.9",
-  "description": "React Hook for mobx",
+  "version": "3.1.10",
+  "description": "React Hooks for mobx",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",
     "build": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_build.ts",
@@ -33,7 +33,8 @@
   "keywords": [
     "react",
     "mobx",
-    "typescript"
+    "typescript",
+    "hooks"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
