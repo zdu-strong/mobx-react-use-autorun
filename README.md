@@ -14,7 +14,7 @@ Provide concise usage for mobx in react<br/>
     export default observer((props: {name: string}) => {
 
         const state = useMobxState({
-            randomNumber: 1
+            age: 16
         }, {
             ...props,
             divRef: useRef<any>()
@@ -22,9 +22,9 @@ Provide concise usage for mobx in react<br/>
 
         return <div
             ref={state.divRef}
-            onClick={() => state.randomNumber = Math.random()}
+            onClick={() => state.age++}
         >
-            {state.randomNumber}
+            {`${state.name}'s age is ${state.age}`}
         </div>
     })
 
