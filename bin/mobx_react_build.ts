@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import path from 'path';
 
-const run = async () => {
+async function main() {
   execSync(
     [
       "npx -y -p typescript -p ts-node ts-node --skipProject",
@@ -15,13 +15,22 @@ const run = async () => {
   );
   execSync(
     [
-      "tsc -p .",
+      "tsc --project tsconfig.build.cjs.json",
     ].join(" "),
     {
       stdio: "inherit",
-      cwd: path.join(__dirname, "../lib"),
+      cwd: path.join(__dirname, ".."),
     }
   );
-};
+  execSync(
+    [
+      "tsc --project tsconfig.build.es.json",
+    ].join(" "),
+    {
+      stdio: "inherit",
+      cwd: path.join(__dirname, ".."),
+    }
+  );
+}
 
-export default run();
+export default main()

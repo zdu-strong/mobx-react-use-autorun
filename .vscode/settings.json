@@ -6,10 +6,12 @@
     ".vscode": true,
     "bin": true,
     "dist": true,
+    "es": true,
     "coverage": true,
     "babel.config.js": true,
     "jest.config.ts": true,
-    "lib/tsconfig.json": true,
+    "tsconfig.build.cjs.json": true,
+    "tsconfig.build.es.json": true,
     "output": true,
     "LICENSE": true
   },

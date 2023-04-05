@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import path from 'path';
 
-const run = async () => {
+async function main() {
   execSync(
     [
       "npx -y -p typescript -p ts-node ts-node --skipProject",
@@ -21,6 +21,6 @@ const run = async () => {
       cwd: path.join(__dirname, ".."),
     }
   );
-};
+}
 
-export default run();
+export default main()
