@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "3.1.16-beta",
+  "version": "3.1.17-beta",
   "description": "Provide concise usage for mobx in react",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",
@@ -36,14 +36,24 @@
     "typescript",
     "hooks"
   ],
-  "main": "./dist/index.js",
-  "module": "./es/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "es2015": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/index.d.ts",
+      "node": "./dist/cjs/index.js",
+      "require": "./dist/cjs/index.js",
+      "es2015": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    }
   },
   "homepage": "https://github.com/zdu-strong/mobx-react-use-autorun#readme",
   "repository": {
@@ -52,8 +62,7 @@
   },
   "files": [
     "lib",
-    "dist",
-    "es"
+    "dist"
   ],
   "bugs": {
     "url": "https://github.com/zdu-strong/mobx-react-use-autorun/issues"

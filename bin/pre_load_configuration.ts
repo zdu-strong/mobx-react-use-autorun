@@ -23,14 +23,8 @@ async function deletePackageLockFile() {
 }
 
 async function deleteBuildFolder() {
-  {
-    const folderPath = path.join(__dirname, "..", "dist");
-    await fs.promises.rm(folderPath, { recursive: true, force: true });
-  }
-  {
-    const folderPath = path.join(__dirname, "..", "es");
-    await fs.promises.rm(folderPath, { recursive: true, force: true });
-  }
+  const folderPath = path.join(__dirname, "..", "dist");
+  await fs.promises.rm(folderPath, { recursive: true, force: true });
 }
 
 async function deleteOutputFolder() {
