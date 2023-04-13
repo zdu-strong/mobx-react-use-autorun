@@ -262,7 +262,7 @@ Non-observable component unable to know data changes, So use toJS to do this.
 
 # Notes - Work together with typedjson
 
-typedjson is a strongly typed reflection library.<br/>
+Typedjson is a strongly typed reflection library.<br/>
 
     import { makeAutoObservable, toJS } from "mobx-react-use-autorun";
     import { TypedJSON, jsonMember, jsonObject } from "typedjson";
@@ -283,6 +283,11 @@ typedjson is a strongly typed reflection library.<br/>
 
     const user = new TypedJSON(UserModel).parse(`{"username":"tom","createDate":"2023-04-13T04:21:59.262Z"}`);
     console.log(toJS(user));
+
+    console.log(toJS(new TypedJSON(UserModel).parse({
+      username: "tom",
+      createDate: "2023-04-13T04:21:59.262Z"
+    })))
 
 # Learn More
 
