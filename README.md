@@ -260,7 +260,7 @@ Non-observable component unable to know data changes, So use toJS to do this.
       />
     })
 
-# Notes - Work together with typedjson
+# Notes - Work with typedjson
 
 Typedjson is a strongly typed reflection library.<br/>
 
