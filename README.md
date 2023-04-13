@@ -233,6 +233,33 @@ Correct Example:<br/>
         </div>;
     })
 
+# Notes - Work with non-observable components
+
+Non-observable component unable to know data changes, So use toJS to do this.
+
+    import { observer, toJS, useMobxState } from "mobx-react-use-autorun";
+    import { v1 } from "uuid";
+    import { Virtuoso } from 'react-virtuoso'
+
+    export default observer(() => {
+
+      const state = useMobxState({
+        userList: [{ id: 1, username: 'Tom' }]
+      })
+
+      toJS(state.userList)
+
+      return <Virtuoso
+        style={{ width: "500px", height: "200px" }}
+        data={state.userList}
+        itemContent={(index, item) =>
+          <div key={item.id} onClick={() => item.username = v1()}>
+            {item.username}
+          </div>
+        }
+      />
+    })
+
 # Notes - Work together with typedjson
 
 typedjson is a strongly typed reflection library.<br/>
