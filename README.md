@@ -233,6 +233,30 @@ Correct Example:<br/>
         </div>;
     })
 
+# Notes - Work together with typedjson
+
+typedjson is a strongly typed reflection library.<br/>
+
+    import { makeAutoObservable, toJS } from "mobx-react-use-autorun";
+    import { TypedJSON, jsonMember, jsonObject } from "typedjson";
+
+    @jsonObject
+    export class UserModel {
+
+      @jsonMember(String)
+      username!: string;
+
+      @jsonMember(Date)
+      createDate!: Date;
+
+      constructor() {
+        makeAutoObservable(this);
+      }
+    }
+
+    const user = new TypedJSON(UserModel).parse(`{"username":"tom","createDate":"2023-04-13T04:21:59.262Z"}`);
+    console.log(toJS(user));
+
 # Learn More
 
 1. A JavaScript library for building user interfaces (https://reactjs.org)<br/>
