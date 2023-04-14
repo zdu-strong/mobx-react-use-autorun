@@ -6,7 +6,7 @@ Provide concise usage for mobx in react<br/>
 
 # `Usage`
 
-### Define state and props with useMobxState
+### Define state with useMobxState
 
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useRef } from 'react';
