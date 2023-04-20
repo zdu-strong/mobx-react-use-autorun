@@ -291,7 +291,7 @@ Typedjson is a strongly typed reflection library.<br/>
 
 # Learn More
 
-1. A JavaScript library for building user interfaces (https://reactjs.org)<br/>
+1. A JavaScript library for building user interfaces (https://react.dev)<br/>
 2. Reactive Extensions Library for JavaScript (https://www.npmjs.com/package/rxjs)
 3. Material UI is a library of React UI components that implements Google's Material Design (https://mui.com)
 
