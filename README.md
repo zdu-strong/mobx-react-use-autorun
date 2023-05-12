@@ -236,9 +236,9 @@ Correct Example:<br/>
 # Notes - Work with non-observable components
 
 Non-observer components cannot trigger re-rendering when the following data changes. Use toJS to do this.<br/>
-1. array<br/>
-2. object<br/>
-3. The all data used in the new render callback.<br/>
+array<br/>
+object<br/>
+The all data used in the new render callback<br/>
 
     import { observer, toJS, useMobxState } from "mobx-react-use-autorun";
     import { v1 } from "uuid";
