@@ -158,6 +158,32 @@ useUnmount is a lifecycle hook that calls a function when the component will unm
         return null;
     })
 
+### Define global mutable data with observable
+
+    import { observable } from 'mobx-react-use-autorun';
+
+    export const globalState = observable({
+        age: 15,
+        name: 'tom'
+    });
+
+    export async function setAge(age: number) {
+        globalState.age = age
+    }
+
+    import { observer } from "mobx-react-use-autorun";
+    import { setAge, globalState } from "./GlobalState";
+
+    export default observer(() => {
+        return <div
+            onClick={() => {
+                setAge(globalState.age + 1)
+            }}
+        >
+            {`${globalState.name}'s age is ${globalState.age}.`}
+        </div>;
+    })
+
 ### Get the real data of the proxy object with toJS
 
 toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering.<br/>
@@ -207,35 +233,12 @@ Correct Example:<br/>
         </button>;
     })
 
-### Define global mutable data with observable
-
-    import { observable } from 'mobx-react-use-autorun';
-
-    export const globalState = observable({
-        age: 15,
-        name: 'tom'
-    });
-
-    export async function setAge(age: number) {
-        globalState.age = age
-    }
-
-    import { observer } from "mobx-react-use-autorun";
-    import { setAge, globalState } from "./GlobalState";
-
-    export default observer(() => {
-        return <div
-            onClick={() => {
-                setAge(globalState.age + 1)
-            }}
-        >
-            {`${globalState.name}'s age is ${globalState.age}.`}
-        </div>;
-    })
-
 # Notes - Work with non-observable components
 
-Non-observable component unable to know data changes, So use toJS to do this.
+Non-observer components cannot trigger re-rendering when the following data changes. Use toJS to do this.<br/>
+1. array<br/>
+2. object<br/>
+3. The all data used in the new render callback.<br/>
 
     import { observer, toJS, useMobxState } from "mobx-react-use-autorun";
     import { v1 } from "uuid";
