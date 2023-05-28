@@ -186,8 +186,9 @@ useUnmount is a lifecycle hook that calls a function when the component will unm
 
 ### Get the real data of the proxy object with toJS
 
-toJS will cause data to be used, please do not execute toJS(state) in component rendering code, it may cause repeated rendering.<br/>
-Wrong Usage Demonstration:<br/>
+"toJS" will cause the component to re-render when data changes.<br/>
+Please do not execute "toJS(state)" in component rendering code, it may cause repeated rendering.<br/>
+Wrong Example:<br/>
 
     import { toJS, observer, useMobxState } from 'mobx-react-use-autorun'
     import { v1 } from 'uuid'
@@ -233,7 +234,7 @@ Correct Example:<br/>
         </button>;
     })
 
-# Notes - Work with non-observable components
+# Notes - Work with non-observer components
 
 Non-observer components cannot trigger re-rendering when the following data changes, please use "toJS" to do it.<br/>
 * array<br/>
