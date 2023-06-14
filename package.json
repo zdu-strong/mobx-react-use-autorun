@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "3.1.29",
+  "version": "3.1.30",
   "description": "Provide concise usage for mobx in react",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",
@@ -20,10 +20,10 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/jest": "29.5.1",
-    "@types/node": "20.2.5",
-    "@types/react": "18.2.7",
-    "@types/react-dom": "18.2.4",
+    "@types/jest": "29.5.2",
+    "@types/node": "20.3.1",
+    "@types/react": "18.2.12",
+    "@types/react-dom": "18.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
