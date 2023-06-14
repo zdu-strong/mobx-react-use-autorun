@@ -31,6 +31,7 @@ async function main() {
       cwd: path.join(__dirname, ".."),
     }
   );
+  process.exit();
 }
 
 export default main()

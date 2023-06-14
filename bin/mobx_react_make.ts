@@ -28,6 +28,7 @@ async function main() {
     }
   );
   await fs.promises.rm(path.join(__dirname, "..", "output"), { recursive: true, force: true })
+  process.exit();
 }
 
 async function preLoadConfiguration() {

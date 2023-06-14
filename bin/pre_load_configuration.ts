@@ -15,6 +15,7 @@ async function main() {
       stdio: "inherit",
     }
   );
+  process.exit();
 }
 
 async function deletePackageLockFile() {
