@@ -131,14 +131,13 @@ Provide a method to generate state, the state is executed only once, and the per
 ### Lifecycle hook with useMount
 
 useMount is a lifecycle hook that calls a function after the component is mounted.<br/>
-It provides a subscription as a parameter, which will be unsubscribed when the component will unmount.<br/>
+It provides a subscription as parameter, which will be unsubscribed when the component will unmount.<br/>
 
 It support Strict Mode.<br/>
 Strict Mode: In the future, React will provide a feature that lets components preserve state between unmounts. To prepare for it, React 18 introduces a new development-only check to Strict Mode. React will automatically unmount and remount every component, whenever a component mounts for the first time, restoring the previous state on the second mount. If this breaks your app, consider removing Strict Mode until you can fix the components to be resilient to remounting with existing state.<br/>
 
     import { Subscription } from 'rxjs'
-    import { useMobxState, observer } from 'mobx-react-use-autorun'
-    import { useMount } from 'mobx-react-use-autorun'
+    import { observer, useMount } from 'mobx-react-use-autorun'
 
     export default observer(() => {
 
