@@ -284,10 +284,11 @@ Typedjson is a strongly typed reflection library.<br/>
     const user = new TypedJSON(UserModel).parse(`{"username":"tom","createDate":"2023-04-13T04:21:59.262Z"}`);
     console.log(toJS(user));
 
-    console.log(toJS(new TypedJSON(UserModel).parse({
+    const anotherUser = new TypedJSON(UserModel).parse({
       username: "tom",
       createDate: "2023-04-13T04:21:59.262Z"
-    })))
+    });
+    console.log(toJS(anotherUser));
 
 # Learn More
 
