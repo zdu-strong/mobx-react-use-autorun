@@ -28,8 +28,35 @@ Provide concise usage for mobx in react<br/>
         </div>
     })
 
-more usage:<br/>
-Form validation<br/>
+useMobxState provides two usages.<br/>
+
+The first way is easy to use, you can define state, props and third-party hooks.<br/>
+
+    useMobxState({
+        name: 'tom',
+        age: 16,
+        myInfo(){
+            return `${state.name}'s age is ${state.age}`
+        },
+    }, {
+        ...props,
+        intl: useIntl(),
+    })
+
+The second way provide a method to generate state, the state is executed only once, and the performance is better.<br/>
+
+    useMobxState(() => ({
+        name: 'tom',
+        age: 13,
+        myInfo(){
+            return `${state.name}'s age is ${state.age}`
+        },
+    }), {
+        ...props,
+        intl: useIntl(),
+    })
+
+More example - Form validation:<br/>
 
     import { Button, TextField } from '@mui/material';
     import { observer, useMobxState } from 'mobx-react-use-autorun';
@@ -77,38 +104,6 @@ Form validation<br/>
             >Submit</Button>
         </div>)
     })
-
-useMobxState provides two usages.<br/>
-
-The first:
-
-    useMobxState({
-        name: 'tom',
-        age: 16,
-        myInfo(){
-            return `${state.name}'s age is ${state.age}`
-        },
-    }, {
-        ...props,
-        intl: useIntl(),
-    })
-
-is easy to use, you can define state, props and third-party hooks.<br/>
-
-The second:
-
-    useMobxState(() => ({
-        name: 'tom',
-        age: 13,
-        myInfo(){
-            return `${state.name}'s age is ${state.age}`
-        },
-    }), {
-        ...props,
-        intl: useIntl(),
-    })
-
-Provide a method to generate state, the state is executed only once, and the performance is better.<br/>
 
 ### Subscription property changes with useMobxEffect
 
