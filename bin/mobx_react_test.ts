@@ -1,6 +1,5 @@
 import { execSync } from "child_process";
 import path from 'path';
-import { commandSync } from 'execa'
 
 async function main() {
   execSync(
@@ -13,7 +12,7 @@ async function main() {
       cwd: path.join(__dirname, ".."),
     }
   );
-  commandSync(
+  execSync(
     [
       "react-scripts test  --watchAll=false",
     ].join(" "),
