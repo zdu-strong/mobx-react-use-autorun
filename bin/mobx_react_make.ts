@@ -17,7 +17,7 @@ async function main() {
   const packageJsonString = await fs.promises.readFile(packageJsonFilePath, "utf8");
   const packageJson = JSON.parse(packageJsonString);
   delete packageJson.devDependencies;
-  await fs.promises.writeFile(packageJsonFilePath, JSON.stringify(packageJson));
+  await fs.promises.writeFile(packageJsonFilePath, JSON.stringify(packageJson, null, 2));
   execSync(
     [
       "npm publish",
