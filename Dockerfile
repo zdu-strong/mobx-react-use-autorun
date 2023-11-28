@@ -14,7 +14,7 @@ RUN dnf install -y nodejs
 RUN dnf install -y git
 COPY . /all_code
 WORKDIR /all_code
-RUN git add ..
+RUN git add .
 RUN git reset --hard
 RUN rm -rf ./node_modules
 RUN npm test
