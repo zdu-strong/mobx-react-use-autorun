@@ -15,6 +15,7 @@
     "output": true,
     "LICENSE": true,
     "Dockerfile": true,
+    ".github": true,
   },
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
