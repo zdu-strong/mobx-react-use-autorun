@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "4.0.21",
+  "version": "4.0.22",
   "description": "Provide concise usage for mobx in react",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",
@@ -8,7 +8,7 @@
     "make": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_make.ts"
   },
   "dependencies": {
-    "mobx": "6.12.0",
+    "mobx": "6.12.1",
     "mobx-react-lite": "4.0.6",
     "rxjs": "7.8.1"
   },
