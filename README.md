@@ -11,20 +11,16 @@ Provide concise usage for mobx in react<br/>
     import { useMobxState, observer } from 'mobx-react-use-autorun';
     import { useRef } from 'react';
 
-    export default observer((props: {name: string}) => {
+    export default observer((props: { name: string }) => {
 
         const state = useMobxState({
             age: 16
-        }, {
-            ...props,
-            divRef: useRef<any>()
         });
 
         return <div
-            ref={state.divRef}
             onClick={() => state.age++}
         >
-            {`${state.name}'s age is ${state.age}`}
+            {`${props.name}'s age is ${state.age}`}
         </div>
     })
 
@@ -112,7 +108,9 @@ More example - Form validation:<br/>
 
     export default observer(() => {
 
-        const state = useMobxState({ randomNumber: 1 });
+        const state = useMobxState({
+            randomNumber: 1
+        });
 
         useMobxEffect(() => {
             console.log(toJS(state))
@@ -149,6 +147,7 @@ Strict Mode: In the future, React will provide a feature that lets components pr
 
 ### Define global mutable data with observable
 
+    // File: GlobalState.tsx
     import { observable } from 'mobx-react-use-autorun';
 
     export const globalState = observable({
@@ -156,17 +155,14 @@ Strict Mode: In the future, React will provide a feature that lets components pr
         name: 'tom'
     });
 
-    export async function setAge(age: number) {
-        globalState.age = age
-    }
-
+    // File: UserComponent.tsx
     import { observer } from "mobx-react-use-autorun";
-    import { setAge, globalState } from "./GlobalState";
+    import { globalState } from "./GlobalState";
 
     export default observer(() => {
         return <div
             onClick={() => {
-                setAge(globalState.age + 1)
+                globalState.age++;
             }}
         >
             {`${globalState.name}'s age is ${globalState.age}.`}
