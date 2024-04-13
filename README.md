@@ -8,10 +8,9 @@ Provide concise usage for mobx in react<br/>
 
 ### Define state with useMobxState
 
-    import { useMobxState, observer } from 'mobx-react-use-autorun';
-    import { useRef } from 'react';
+    import { observer, useMobxState } from 'mobx-react-use-autorun';
 
-    export default observer((props: { name: string }) => {
+    export default observer(() => {
 
         const state = useMobxState({
             age: 16
@@ -20,36 +19,8 @@ Provide concise usage for mobx in react<br/>
         return <div
             onClick={() => state.age++}
         >
-            {`${props.name}'s age is ${state.age}`}
+            {`John's age is ${state.age}`}
         </div>
-    })
-
-useMobxState provides two usages.<br/>
-
-The first way is easy to use, you can define state, props and third-party hooks.<br/>
-
-    useMobxState({
-        name: 'tom',
-        age: 16,
-        myInfo(){
-            return `${state.name}'s age is ${state.age}`
-        },
-    }, {
-        ...props,
-        intl: useIntl(),
-    })
-
-The second way provide a method to generate state, the state is executed only once, and the performance is better.<br/>
-
-    useMobxState(() => ({
-        name: 'tom',
-        age: 13,
-        myInfo(){
-            return `${state.name}'s age is ${state.age}`
-        },
-    }), {
-        ...props,
-        intl: useIntl(),
     })
 
 More example - Form validation:<br/>
@@ -101,24 +72,28 @@ More example - Form validation:<br/>
         </div>)
     })
 
-### Subscription property changes with useMobxEffect
+More example - Use props and other hooks:<br/>
 
-    import { useMobxState, observer } from 'mobx-react-use-autorun';
-    import { useMobxEffect, toJS } from 'mobx-react-use-autorun'
+    import { observer, useMobxState } from 'mobx-react-use-autorun';
+    import { useRef } from 'react';
 
-    export default observer(() => {
+
+    export default observer((props: { user: { name: string, age: number } }) => {
 
         const state = useMobxState({
-            randomNumber: 1
+        }, {
+          containerRef: useRef<HTMLDivElement>(null),
         });
 
-        useMobxEffect(() => {
-            console.log(toJS(state))
-        }, [state.randomNumber])
-
-        return <div onClick={() => state.randomNumber = Math.random()}>
-            {state.randomNumber}
+        return <div
+          ref={state.containerRef}
+          onClick={() => {
+            props.user.age++;
+          }}
+        >
+            {`${props.user.name}'s age is ${props.user.age}.`}
         </div>
+
     })
 
 ### Lifecycle hook with useMount
@@ -143,6 +118,26 @@ Strict Mode: In the future, React will provide a feature that lets components pr
         })
 
         return null;
+    })
+
+### Subscription property changes with useMobxEffect
+
+    import { useMobxState, observer } from 'mobx-react-use-autorun';
+    import { useMobxEffect, toJS } from 'mobx-react-use-autorun'
+
+    export default observer(() => {
+
+        const state = useMobxState({
+            randomNumber: 1
+        });
+
+        useMobxEffect(() => {
+            console.log(toJS(state))
+        }, [state.randomNumber])
+
+        return <div onClick={() => state.randomNumber = Math.random()}>
+            {state.randomNumber}
+        </div>
     })
 
 ### Define global mutable data with observable
