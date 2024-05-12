@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react'
-import { observer, observable } from '../lib';
+import { render } from '@testing-library/react';
+import { act } from 'react';
 import { timer } from 'rxjs';
-import { act } from 'react-dom/test-utils';
+import { observable, observer } from '../lib';
 
 test('', async () => {
   const result = render(<TestComponent />);
