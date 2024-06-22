@@ -1,4 +1,4 @@
-import { extendObservable, remove, isObservable, runInAction } from 'mobx';
+import { remove, isObservable, runInAction } from 'mobx';
 import { useLocalObservable } from 'mobx-react-lite';
 import { useRef } from 'react';
 
@@ -20,13 +20,12 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
         }
       }
 
-      for (const key in props) {
+      for (const key of Object.keys(props)) {
         if (isObservable(props[key]) || Object.getOwnPropertyDescriptor(props, key)?.get) {
           Object.defineProperty(mobxState, key, Object.getOwnPropertyDescriptor(props, key) as any)
         } else {
           if (props[key] !== mobxState[key]) {
-            remove(mobxState, key);
-            extendObservable(mobxState, { [key]: props[key] }, { [key]: false })
+            Object.defineProperty(mobxState, key, Object.getOwnPropertyDescriptor(props, key) as any)
           }
         }
       }

@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-use-autorun",
-  "version": "4.0.32",
+  "version": "4.0.33-beta",
   "description": "Provide concise usage for mobx in react",
   "scripts": {
     "test": "npx -y -p typescript -p ts-node ts-node --skipProject bin/mobx_react_test.ts",
