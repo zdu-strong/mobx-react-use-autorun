@@ -1,4 +1,4 @@
-import { remove, runInAction, makeAutoObservable } from 'mobx';
+import { remove, runInAction, makeAutoObservable, extendObservable, isObservable } from 'mobx';
 import { useRef, useState } from 'react';
 
 export function useMobxState<T extends Record<any, any>>(state: T | (() => T)): T;
@@ -21,8 +21,16 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
       }
 
       for (const key of Object.keys(props)) {
-        remove(mobxState, key);
-        Object.assign(mobxState, { [key]: props[key] });
+        for (const key in props) {
+          if (isObservable(props[key]) || Object.getOwnPropertyDescriptor(props, key)?.get) {
+            Object.defineProperty(mobxState, key, Object.getOwnPropertyDescriptor(props, key) as any);
+          } else {
+            if (props[key] !== mobxState[key]) {
+              remove(mobxState, key);
+              extendObservable(mobxState, { [key]: props[key] }, { [key]: false });
+            }
+          }
+        }
       }
 
       keyListOfState.current.splice(0, keyListOfState.current.length);

@@ -41,11 +41,11 @@ export const useMobxEffect = (callback: () => void, dependencyList?: any[]): voi
           const props = Object.assign({}, dependencyListRef.current);
           for (const key in props) {
             if (isObservable(props[key]) || Object.getOwnPropertyDescriptor(props, key)?.get) {
-              Object.defineProperty(mobxData, key, Object.getOwnPropertyDescriptor(props, key) as any)
+              Object.defineProperty(mobxData, key, Object.getOwnPropertyDescriptor(props, key) as any);
             } else {
               if (props[key] !== mobxData[key]) {
                 remove(mobxData, key);
-                extendObservable(mobxData, { [key]: props[key] }, { [key]: false })
+                extendObservable(mobxData, { [key]: props[key] }, { [key]: false });
               }
             }
           }
