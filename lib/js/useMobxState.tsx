@@ -6,13 +6,7 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
 
 export function useMobxState<T extends Record<any, any>, P extends Record<any, any>>(state: T | (() => T), props?: P): T & P {
   const initStateFunction = typeof state === "function" ? (state as any) : () => state;
-  const initState = useState(initStateFunction)[0];
-  const initAnnotations = {} as any;
-  for (const initStateKey of Object.keys(initState)) {
-    initAnnotations[initStateKey] = observable.deep;
-  }
-
-  const mobxState = useState(() => observable(initState, initAnnotations, { autoBind: true, proxy: false }))[0] as Record<string, any>;
+  const mobxState = useState(() => observable(initStateFunction(), undefined, { autoBind: true, proxy: false }))[0] as Record<string, any>;
 
   const keyListOfState = useRef<string[]>([]);
 
