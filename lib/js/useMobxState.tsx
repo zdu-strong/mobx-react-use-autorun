@@ -20,10 +20,8 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
         }
       }
 
-      for (const key of Object.keys(props)) {
-        for (const key in props) {
-          extendObservable(mobxState, { [key]: props[key] }, { [key]: false });
-        }
+      for (const key in props) {
+        extendObservable(mobxState, { [key]: props[key] }, { [key]: false });
       }
 
       keyListOfState.current.splice(0, keyListOfState.current.length);

@@ -1,8 +1,8 @@
 import { useMount } from './useMount';
 import { ReplaySubject, Subscription, tap } from 'rxjs';
-import { observable, reaction, toJS } from 'mobx'
+import { makeAutoObservable, reaction, toJS } from 'mobx'
 import { useEffect, useRef } from 'react';
-import { extendObservable, remove, isObservable, runInAction } from 'mobx';
+import { extendObservable, runInAction } from 'mobx';
 
 export const useMobxEffect = (callback: () => void, dependencyList?: any[]): void => {
 
@@ -34,20 +34,13 @@ export const useMobxEffect = (callback: () => void, dependencyList?: any[]): voi
     if (!dependencyList) {
       return;
     }
-    const mobxData = observable(Object.assign({}, dependencyListRef.current));
+    const mobxData = makeAutoObservable(Object.assign({}, dependencyListRef.current));
     subscription.add(subjectRef.current.pipe(
       tap(() => {
         runInAction(() => {
           const props = Object.assign({}, dependencyListRef.current);
           for (const key in props) {
-            if (isObservable(props[key]) || Object.getOwnPropertyDescriptor(props, key)?.get) {
-              Object.defineProperty(mobxData, key, Object.getOwnPropertyDescriptor(props, key) as any);
-            } else {
-              if (props[key] !== mobxData[key]) {
-                remove(mobxData, key);
-                extendObservable(mobxData, { [key]: props[key] }, { [key]: false });
-              }
-            }
+            extendObservable(mobxData, { [key]: props[key] }, { [key]: false });
           }
         })
       })
