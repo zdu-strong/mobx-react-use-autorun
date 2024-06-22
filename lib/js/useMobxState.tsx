@@ -1,4 +1,4 @@
-import { remove, runInAction, observable } from 'mobx';
+import { remove, runInAction, makeAutoObservable } from 'mobx';
 import { useRef, useState } from 'react';
 
 export function useMobxState<T extends Record<any, any>>(state: T | (() => T)): T;
@@ -6,7 +6,7 @@ export function useMobxState<T extends Record<any, any>, P extends Record<any, a
 
 export function useMobxState<T extends Record<any, any>, P extends Record<any, any>>(state: T | (() => T), props?: P): T & P {
   const initStateFunction = typeof state === "function" ? (state as any) : () => state;
-  const mobxState = useState(() => observable(initStateFunction(), undefined, { autoBind: true, proxy: false }))[0] as Record<string, any>;
+  const mobxState = useState(() => makeAutoObservable(initStateFunction()))[0] as Record<string, any>;
 
   const keyListOfState = useRef<string[]>([]);
 
