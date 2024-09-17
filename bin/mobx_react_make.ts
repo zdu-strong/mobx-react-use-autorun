@@ -34,7 +34,7 @@ async function main() {
 async function preLoadConfiguration() {
   execSync(
     [
-      "npx -y -p typescript -p ts-node ts-node --skipProject",
+      "npx -y tsx",
       "bin/pre_load_configuration.ts",
     ].join(" "),
     {
