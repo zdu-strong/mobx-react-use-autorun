@@ -3,9 +3,9 @@
   "version": "4.0.46",
   "description": "Provide concise usage for mobx in react",
   "scripts": {
-    "test": "npx -y tsx bin/mobx_react_test.ts",
-    "build": "npx -y tsx bin/mobx_react_build.ts",
-    "make": "npx -y tsx bin/mobx_react_make.ts"
+    "test": "node bin/mobx_react_test.js",
+    "build": "node bin/mobx_react_build.js",
+    "make": "node bin/mobx_react_make.js"
   },
   "dependencies": {
     "mobx": "6.13.3",

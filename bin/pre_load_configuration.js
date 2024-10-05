@@ -1,6 +1,6 @@
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
+const fs = require("fs")
+const path = require("path")
+const { execSync } = require("child_process")
 
 async function main() {
   await deletePackageLockFile();
@@ -33,4 +33,4 @@ async function deleteOutputFolder() {
   await fs.promises.rm(folderPath, { recursive: true, force: true });
 }
 
-export default main()
+module.exports = main()

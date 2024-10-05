@@ -1,11 +1,11 @@
-import { execSync } from "child_process";
-import path from 'path';
+const path = require("path")
+const { execSync } = require("child_process")
 
 async function main() {
   execSync(
     [
-      "npx -y tsx",
-      "bin/pre_load_configuration.ts",
+      "node",
+      "bin/pre_load_configuration.js",
     ].join(" "),
     {
       stdio: "inherit",
@@ -24,4 +24,4 @@ async function main() {
   process.exit();
 }
 
-export default main()
+module.exports = main()

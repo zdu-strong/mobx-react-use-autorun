@@ -1,6 +1,6 @@
-import { execSync } from "child_process";
-import path from 'path';
-import fs from 'fs'
+const fs = require("fs")
+const path = require("path")
+const { execSync } = require("child_process")
 
 async function main() {
   await preLoadConfiguration();
@@ -34,8 +34,8 @@ async function main() {
 async function preLoadConfiguration() {
   execSync(
     [
-      "npx -y tsx",
-      "bin/pre_load_configuration.ts",
+      "node",
+      "bin/pre_load_configuration.js",
     ].join(" "),
     {
       stdio: "inherit",
@@ -77,4 +77,4 @@ async function build() {
   );
 }
 
-export default main()
+module.exports = main()
