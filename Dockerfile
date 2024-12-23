@@ -10,7 +10,7 @@ ENV LANG="en_US.UTF-8"
 RUN dnf module install -y nodejs:22
 
 # run test
-FROM first_docker as second_docker
+FROM first_docker AS second_docker
 RUN dnf install -y git
 COPY . /all_code
 WORKDIR /all_code
