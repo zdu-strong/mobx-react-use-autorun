@@ -1,4 +1,4 @@
-FROM rockylinux:9.3.20231119 as first_docker
+FROM rockylinux/rockylinux:9.5.20241118 AS first_docker
 
 LABEL maintainer="zdu.strong@gmail.com"
 
@@ -7,7 +7,7 @@ RUN dnf install -y langpacks-en glibc-langpack-en
 ENV LANG="en_US.UTF-8"
 
 # install nodejs
-RUN dnf module install -y nodejs:20/minimal
+RUN dnf module install -y nodejs:22
 
 # run test
 FROM first_docker as second_docker
