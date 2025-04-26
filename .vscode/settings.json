@@ -16,6 +16,7 @@
     "LICENSE": true,
     "Dockerfile": true,
     ".github": true,
+    ".ncurc.json": true,
   },
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
