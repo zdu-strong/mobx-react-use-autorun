@@ -83,7 +83,6 @@ More example - Use props and other hooks:<br/>
         const state = useMobxState({
         }, {
           containerRef: useRef<HTMLDivElement>(null),
-          ...props,
         });
 
         return <div
