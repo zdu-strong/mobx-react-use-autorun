@@ -14,8 +14,6 @@ FROM first_docker AS second_docker
 RUN dnf install -y git
 COPY . /all_code
 WORKDIR /all_code
-RUN git add .
-RUN git reset --hard
 RUN rm -rf ./node_modules
 RUN npm test
 RUN npm run build
