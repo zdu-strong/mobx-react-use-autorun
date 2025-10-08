@@ -7,9 +7,9 @@ test('', async () => {
     const result = render(<TestComponent />);
     expect(result.container.textContent).toEqual('tom')
     await timer(1).toPromise();
-    act(() => {
+    await act(() => {
         globalData.people.name = 'jerry'
-    })
+    });
     await timer(1).toPromise();
     expect(result.container.textContent).toEqual('jerry')
 })
