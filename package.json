@@ -1,6 +1,6 @@
 {
     "name": "mobx-react-use-autorun",
-    "version": "4.0.65",
+    "version": "4.0.66-beta",
     "description": "Provide concise usage for mobx in react",
     "scripts": {
         "test": "node bin/mobx_react_test.js",
