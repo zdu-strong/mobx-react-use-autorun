@@ -1,17 +1,17 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "dist/esm",
-    "module": "ESNext",
-    "target": "ES5",
-    "noEmit": false,
-    "sourceMap": true,
-    "declaration": true,
-  },
-  "include": [
-    "lib/**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "dist/esm",
+        "module": "ESNext",
+        "target": "ES5",
+        "noEmit": false,
+        "sourceMap": true,
+        "declaration": true,
+    },
+    "include": [
+        "lib/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }

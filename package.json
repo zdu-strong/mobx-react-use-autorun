@@ -1,73 +1,73 @@
 {
-  "name": "mobx-react-use-autorun",
-  "version": "4.0.64",
-  "description": "Provide concise usage for mobx in react",
-  "scripts": {
-    "test": "node bin/mobx_react_test.js",
-    "build": "node bin/mobx_react_build.js",
-    "make": "node bin/mobx_react_make.js"
-  },
-  "dependencies": {
-    "mobx": "6.13.7",
-    "mobx-react": "9.2.0",
-    "rxjs": ">=7.8.2"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
-    "@testing-library/jest-dom": "6.8.0",
-    "@testing-library/react": "16.3.0",
-    "@testing-library/user-event": "14.6.1",
-    "@types/jest": "30.0.0",
-    "@types/node": "24.4.0",
-    "@types/react": "19.1.13",
-    "@types/react-dom": "19.1.9",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "react-scripts": "5.0.1",
-    "typescript": "4.9.5"
-  },
-  "license": "MIT",
-  "keywords": [
-    "react",
-    "mobx",
-    "typescript",
-    "hooks"
-  ],
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "es2015": "./dist/esm/index.js",
-  "types": "./dist/cjs/index.d.ts",
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/cjs/index.d.ts",
-      "node": "./dist/cjs/index.js",
-      "require": "./dist/cjs/index.js",
-      "es2015": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
+    "name": "mobx-react-use-autorun",
+    "version": "4.0.65",
+    "description": "Provide concise usage for mobx in react",
+    "scripts": {
+        "test": "node bin/mobx_react_test.js",
+        "build": "node bin/mobx_react_build.js",
+        "make": "node bin/mobx_react_make.js"
+    },
+    "dependencies": {
+        "mobx": "6.15.0",
+        "mobx-react": "9.2.1",
+        "rxjs": ">=7.8.2"
+    },
+    "peerDependencies": {
+        "react": ">=16.8.0"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+        "@testing-library/jest-dom": "6.9.1",
+        "@testing-library/react": "16.3.0",
+        "@testing-library/user-event": "14.6.1",
+        "@types/jest": "30.0.0",
+        "@types/node": "24.7.0",
+        "@types/react": "19.2.2",
+        "@types/react-dom": "19.2.1",
+        "react": "19.2.0",
+        "react-dom": "19.2.0",
+        "react-scripts": "5.0.1",
+        "typescript": "4.9.5"
+    },
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "mobx",
+        "typescript",
+        "hooks"
+    ],
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "es2015": "./dist/esm/index.js",
+    "types": "./dist/cjs/index.d.ts",
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/cjs/index.d.ts",
+            "node": "./dist/cjs/index.js",
+            "require": "./dist/cjs/index.js",
+            "es2015": "./dist/esm/index.js",
+            "default": "./dist/esm/index.js"
+        }
+    },
+    "homepage": "https://github.com/zdu-strong/mobx-react-use-autorun#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zdu-strong/mobx-react-use-autorun.git"
+    },
+    "files": [
+        "lib",
+        "dist"
+    ],
+    "bugs": {
+        "url": "https://github.com/zdu-strong/mobx-react-use-autorun/issues"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
     }
-  },
-  "homepage": "https://github.com/zdu-strong/mobx-react-use-autorun#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zdu-strong/mobx-react-use-autorun.git"
-  },
-  "files": [
-    "lib",
-    "dist"
-  ],
-  "bugs": {
-    "url": "https://github.com/zdu-strong/mobx-react-use-autorun/issues"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  }
 }
