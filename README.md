@@ -96,6 +96,32 @@ More example - Use props and other hooks:<br/>
 
     })
 
+More example - Avoid the closure trap of props:<br/>
+
+    import { observer, useMobxState } from 'mobx-react-use-autorun';
+
+
+    export default observer((props: {
+        age: number,
+        setAge: (age: number) => Promise<void>
+    }) => {
+
+        const state = useMobxState({
+        }, {
+            ...props,
+        });
+
+        return <div
+            onClick={async () => {
+                console.log(`Value before addition ${state.age}`);
+                await state.setAge(state.age + 1);
+                console.log(`Value after addition ${state.age}`);
+            }}
+        >
+            {`Tom's age is ${state.age}.`}
+        </div>
+    })
+
 ### Lifecycle hook with useMount
 
 useMount is a lifecycle hook that calls a function after the component is mounted.<br/>
