@@ -122,6 +122,23 @@ More example - Avoid the closure trap of props:<br/>
         </div>
     })
 
+More example - One-time initialization:<br/>
+
+    import { observer, useMobxState } from 'mobx-react-use-autorun';
+
+    export default observer(() => {
+
+        const state = useMobxState(() => ({
+            age: 16
+        }));
+
+        return <div
+            onClick={() => state.age++}
+        >
+            {`John's age is ${state.age}`}
+        </div>
+    })
+
 ### Lifecycle hook with useMount
 
 useMount is a lifecycle hook that calls a function after the component is mounted.<br/>
