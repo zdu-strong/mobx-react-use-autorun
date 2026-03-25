@@ -74,6 +74,8 @@ async function publish() {
     execSync(
         [
             "npm publish",
+            "--access",
+            "public",
             ...(tagOfPublish ? ["--tag", tagOfPublish] : []),
         ].join(" "),
         {
