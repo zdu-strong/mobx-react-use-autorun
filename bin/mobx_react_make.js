@@ -70,7 +70,7 @@ async function publish() {
     delete packageJson.devDependencies;
     await fs.promises.writeFile(packageJsonFilePath, `${JSON.stringify(packageJson, null, 4)}\n`);
     const version = packageJson.version;
-    const tagOfPublish = version.endsWith("-beta") ? "beta" : "stable";
+    const tagOfPublish = version.endsWith("-beta") ? "beta" : "latest";
     execSync(
         [
             "npm publish",
