@@ -349,10 +349,6 @@ Builds the files for production to the `dist` folder.<br/>
 
 Publish to npm repository<br/>
 
-Pre-step, please run<br/>
-
-    npm login --registry https://registry.npmjs.org
-
 # License
 
 This project is licensed under the terms of the [MIT license](./LICENSE).

@@ -73,9 +73,16 @@ async function publish() {
     const tagOfPublish = version.endsWith("-beta") ? "beta" : "";
     execSync(
         [
+            "npm login --registry https://registry.npmjs.org",
+        ].join(" "),
+        {
+            stdio: "inherit",
+            cwd: path.join(__dirname, "../output"),
+        }
+    );
+    execSync(
+        [
             "npm publish",
-            "--access",
-            "public",
             ...(tagOfPublish ? ["--tag", tagOfPublish] : []),
         ].join(" "),
         {
