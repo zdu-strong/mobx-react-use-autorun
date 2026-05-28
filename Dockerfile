@@ -12,9 +12,9 @@ RUN dnf module install -y nodejs:24
 # run test
 FROM first_docker AS second_docker
 RUN dnf install -y git
-COPY . /all_code
-WORKDIR /all_code
-RUN rm -rf ./node_modules
+COPY . /all-code
+RUN rm -rf /all-code/node_modules
+WORKDIR /all-code
 RUN npm test
 RUN npm run build
 
