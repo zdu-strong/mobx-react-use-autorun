@@ -1,6 +1,6 @@
 {
     "name": "mobx-react-use-autorun",
-    "version": "4.0.89",
+    "version": "4.0.90-beta",
     "description": "Provide concise usage for mobx in react",
     "scripts": {
         "test": "node bin/mobx_react_test.js",
@@ -8,7 +8,7 @@
         "make": "node bin/mobx_react_make.js"
     },
     "dependencies": {
-        "mobx": "7.0.5",
+        "mobx": "7.1.0",
         "mobx-react": "10.0.2",
         "rxjs": ">=7.8.2"
     },
@@ -20,7 +20,7 @@
         "@babel/plugin-proposal-private-property-in-object": "7.21.11",
         "@testing-library/jest-dom": "7.0.1",
         "@testing-library/react": "16.3.3",
-        "@testing-library/user-event": "14.6.7",
+        "@testing-library/user-event": "14.6.8",
         "@types/jest": "30.0.0",
         "@types/node": "24.19.0",
         "@types/react": "19.0.6",
